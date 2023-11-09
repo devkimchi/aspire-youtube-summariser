@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEBF5F25-70EA-41A3-BC8B-022A398B0D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.WebApp", "AspireYouTubeSummariser.WebApp\AspireYouTubeSummariser.WebApp.csproj", "{97F94B07-90F4-478B-8CC4-FFF21202E8E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.WebApp", "src\AspireYouTubeSummariser.WebApp\AspireYouTubeSummariser.WebApp.csproj", "{97F94B07-90F4-478B-8CC4-FFF21202E8E3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.ApiApp", "src\AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj", "{B17058C9-8B77-497F-B281-ABED54DE9105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.ApiApp", "AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj", "{B17058C9-8B77-497F-B281-ABED54DE9105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{97F94B07-90F4-478B-8CC4-FFF21202E8E3} = {AEBF5F25-70EA-41A3-BC8B-022A398B0D14}
-		{B17058C9-8B77-497F-B281-ABED54DE9105} = {AEBF5F25-70EA-41A3-BC8B-022A398B0D14}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82599237-1C6B-4004-A1AA-CC8C7A4A949B}
