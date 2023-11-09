@@ -1,0 +1,16 @@
+@YouTubeSummariser.ApiApp_HostAddress = http://localhost:5050
+
+GET {{YouTubeSummariser.ApiApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{YouTubeSummariser.ApiApp_HostAddress}}/summary
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "videoUrl": "https://www.youtube.com/watch?v=YolWosck5a0",
+  "videoLanguageCode": "en",
+  "summaryLanguageCode": "en"
+}

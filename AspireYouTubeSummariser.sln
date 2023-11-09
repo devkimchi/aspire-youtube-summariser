@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEBF5F25-70EA-41A3-BC8B-022A398B0D14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YouTubeSummariser.WebApp", "src\YouTubeSummariser.WebApp\YouTubeSummariser.WebApp.csproj", "{65660E11-B765-4B70-AC5D-A8E74557BB8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeSummariser.ApiApp", "src\YouTubeSummariser.ApiApp\YouTubeSummariser.ApiApp.csproj", "{D5F7348B-64A7-436A-8CB8-157FD0E32EDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65660E11-B765-4B70-AC5D-A8E74557BB8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65660E11-B765-4B70-AC5D-A8E74557BB8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65660E11-B765-4B70-AC5D-A8E74557BB8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65660E11-B765-4B70-AC5D-A8E74557BB8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F7348B-64A7-436A-8CB8-157FD0E32EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F7348B-64A7-436A-8CB8-157FD0E32EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F7348B-64A7-436A-8CB8-157FD0E32EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F7348B-64A7-436A-8CB8-157FD0E32EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{65660E11-B765-4B70-AC5D-A8E74557BB8C} = {AEBF5F25-70EA-41A3-BC8B-022A398B0D14}
+		{D5F7348B-64A7-436A-8CB8-157FD0E32EDE} = {AEBF5F25-70EA-41A3-BC8B-022A398B0D14}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82599237-1C6B-4004-A1AA-CC8C7A4A949B}
+	EndGlobalSection
+EndGlobal
