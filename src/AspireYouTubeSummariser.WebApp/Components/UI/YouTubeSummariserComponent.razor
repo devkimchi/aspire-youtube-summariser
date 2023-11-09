@@ -1,6 +1,6 @@
-﻿@using Microsoft.FluentUI.AspNetCore.Components
-@using AspireYouTubeSummariser.WebApp.Services
+﻿@using AspireYouTubeSummariser.WebApp.Services
 @inject IYouTubeService YouTube
+@inject IJSRuntime JSR
 
 <div class="container">
 	<div class="row">
@@ -41,11 +41,11 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="mb-3">
-			<FluentProgress Visible="@summaryStarted" />
-		</div>
-	</div>
+    <div class="row">
+        <div class="mb-3">
+            <div id="progressBar" hidden="@summaryCompleted"></div>
+        </div>
+    </div>
 
 	<div class="row">
 		<div class="mb-3">
@@ -61,16 +61,17 @@
 	private string videoLanguageCode = "en";
 	private string summaryLanguageCode = "en";
 	private string summaryResult = string.Empty;
-	private bool summaryStarted;
+	private bool summaryCompleted;
 
 	private async Task SummariseAsync()
 	{
-		summaryStarted = true;
+		summaryCompleted = false;
+		await JSR.InvokeVoidAsync("YouTube.RenderProgressBar");
 
 		var summary = await YouTube.GetVideoSummaryAsync(youTubeLinkUrl, videoLanguageCode, summaryLanguageCode);
 		summaryResult = summary;
 
-		summaryStarted = false;
+		summaryCompleted = true;
 	}
 
 	private async Task ClearAsync()
@@ -78,7 +79,7 @@
 		youTubeLinkUrl = string.Empty;
 		videoLanguageCode = "en";
 		summaryLanguageCode = "en";
-		summaryResult = "";
+		summaryResult = string.Empty;
 
 		await Task.CompletedTask;
 	}
