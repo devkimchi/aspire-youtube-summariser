@@ -1,4 +1,4 @@
-﻿namespace YouTubeSummariser.ApiApp.Models;
+﻿namespace AspireYouTubeSummariser.ApiApp.Models;
 
 public class SummaryRequestModel
 {

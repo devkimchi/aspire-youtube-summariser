@@ -4,8 +4,8 @@ using Aliencube.YouTubeSubtitlesExtractor.Abstractions;
 using Azure;
 using Azure.AI.OpenAI;
 
-using YouTubeSummariser.ApiApp.Configurations;
-using YouTubeSummariser.ApiApp.Services;
+using AspireYouTubeSummariser.ApiApp.Configurations;
+using AspireYouTubeSummariser.ApiApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

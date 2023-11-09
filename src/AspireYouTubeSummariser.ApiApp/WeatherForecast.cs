@@ -1,4 +1,4 @@
-namespace YouTubeSummariser.ApiApp
+namespace AspireYouTubeSummariser.ApiApp
 {
     public class WeatherForecast
     {

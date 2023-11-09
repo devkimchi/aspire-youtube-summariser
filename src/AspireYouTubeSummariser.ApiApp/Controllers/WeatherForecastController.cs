@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace YouTubeSummariser.ApiApp.Controllers
+namespace AspireYouTubeSummariser.ApiApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]

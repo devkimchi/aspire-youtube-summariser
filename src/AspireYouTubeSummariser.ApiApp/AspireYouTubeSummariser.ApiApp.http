@@ -1,11 +1,11 @@
-@YouTubeSummariser.ApiApp_HostAddress = http://localhost:5050
+@AspireYouTubeSummariser.ApiApp_HostAddress = https://localhost:5051
 
-GET {{YouTubeSummariser.ApiApp_HostAddress}}/weatherforecast/
+GET {{AspireYouTubeSummariser.ApiApp_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
 
-POST {{YouTubeSummariser.ApiApp_HostAddress}}/summary
+POST {{AspireYouTubeSummariser.ApiApp_HostAddress}}/summary
 Accept: text/plain
 Content-Type: application/json
 

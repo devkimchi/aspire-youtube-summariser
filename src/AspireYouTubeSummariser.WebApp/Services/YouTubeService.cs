@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json;
 
-namespace YouTubeSummariser.WebApp.Services
+namespace AspireYouTubeSummariser.WebApp.Services
 {
     public interface IYouTubeService
     {

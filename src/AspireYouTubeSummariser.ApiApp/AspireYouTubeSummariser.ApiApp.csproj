@@ -3,8 +3,8 @@
   <PropertyGroup>
     <InvariantGlobalization>true</InvariantGlobalization>
 
-    <AssemblyName>YouTubeSummariser.ApiApp</AssemblyName>
-    <RootNamespace>YouTubeSummariser.ApiApp</RootNamespace>
+    <AssemblyName>AspireYouTubeSummariser.ApiApp</AssemblyName>
+    <RootNamespace>AspireYouTubeSummariser.ApiApp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

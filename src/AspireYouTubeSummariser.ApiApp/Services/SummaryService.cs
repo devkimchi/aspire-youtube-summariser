@@ -2,10 +2,10 @@
 
 using Azure.AI.OpenAI;
 
-using YouTubeSummariser.ApiApp.Configurations;
-using YouTubeSummariser.ApiApp.Models;
+using AspireYouTubeSummariser.ApiApp.Configurations;
+using AspireYouTubeSummariser.ApiApp.Models;
 
-namespace YouTubeSummariser.ApiApp.Services
+namespace AspireYouTubeSummariser.ApiApp.Services
 {
     public interface ISummaryService
     {

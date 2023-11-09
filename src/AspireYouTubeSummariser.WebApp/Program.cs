@@ -1,5 +1,5 @@
-using YouTubeSummariser.WebApp.Components;
-using YouTubeSummariser.WebApp.Services;
+using AspireYouTubeSummariser.WebApp.Components;
+using AspireYouTubeSummariser.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
