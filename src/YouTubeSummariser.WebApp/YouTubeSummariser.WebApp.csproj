@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <AssemblyName>YouTubeSummariser.WebApp</AssemblyName>
+    <RootNamespace>YouTubeSummariser.WebApp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.0.0-rc.2" />
+  </ItemGroup>
+
+</Project>
