@@ -1,4 +1,4 @@
-﻿namespace YouTubeSummariser.ApiApp.Configurations;
+﻿namespace AspireYouTubeSummariser.ApiApp.Configurations;
 
 /// <summary>
 /// This represents the settings entity for the OpenAI API.
