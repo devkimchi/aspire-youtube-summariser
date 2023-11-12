@@ -14,6 +14,10 @@
     <None Include="$(JsInteropRoot)**" Exclude="$(JsInteropRoot)node_modules/**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AspireYouTubeSummariser.ServiceDefaults\AspireYouTubeSummariser.ServiceDefaults.csproj" />
+  </ItemGroup>
+
   <Target Name="PublishRunWebpack" AfterTargets="Build">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(JsInteropRoot)" Command="npm install" />
