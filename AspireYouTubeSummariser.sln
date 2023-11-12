@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireYouTubeSummariser.WebApp", "AspireYouTubeSummariser.WebApp\AspireYouTubeSummariser.WebApp.csproj", "{6147265D-E320-44B4-8069-03AE58C4350F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.WebApp", "AspireYouTubeSummariser.WebApp\AspireYouTubeSummariser.WebApp.csproj", "{6147265D-E320-44B4-8069-03AE58C4350F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireYouTubeSummariser.ApiApp", "AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj", "{3053C126-C1E1-4FC8-87BB-EDB2484BDC40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.ApiApp", "AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj", "{3053C126-C1E1-4FC8-87BB-EDB2484BDC40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

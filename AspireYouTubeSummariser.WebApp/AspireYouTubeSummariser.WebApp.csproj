@@ -3,6 +3,21 @@
   <PropertyGroup>
     <AssemblyName>AspireYouTubeSummariser.WebApp</AssemblyName>
     <RootNamespace>AspireYouTubeSummariser.WebApp</RootNamespace>
+
+    <JsInteropRoot>JsInterop/</JsInteropRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(JsInteropRoot)node_modules/**</DefaultItemExcludes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="$(JsInteropRoot)**" />
+    <None Remove="$(JsInteropRoot)**" />
+    <None Include="$(JsInteropRoot)**" Exclude="$(JsInteropRoot)node_modules/**" />
+  </ItemGroup>
+
+  <Target Name="PublishRunWebpack" AfterTargets="Build">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(JsInteropRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(JsInteropRoot)" Command="npm run build" />
+  </Target>
 
 </Project>
