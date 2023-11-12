@@ -4,6 +4,7 @@ using AspireYouTubeSummariser.WebApp.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddRedisOutputCache("cache");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -18,6 +19,7 @@ builder.Services.AddHttpClient<IApiAppClient, ApiAppClient>(client =>
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
+app.UseOutputCache();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
