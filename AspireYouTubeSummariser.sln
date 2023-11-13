@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.ApiApp", "AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj", "{3053C126-C1E1-4FC8-87BB-EDB2484BDC40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireYouTubeSummariser.AppHost", "AspireYouTubeSummariser.AppHost\AspireYouTubeSummariser.AppHost.csproj", "{C90F6EED-BD08-4FBF-8F37-551D6FD0437F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.AppHost", "AspireYouTubeSummariser.AppHost\AspireYouTubeSummariser.AppHost.csproj", "{C90F6EED-BD08-4FBF-8F37-551D6FD0437F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.ServiceDefaults", "AspireYouTubeSummariser.ServiceDefaults\AspireYouTubeSummariser.ServiceDefaults.csproj", "{947ABBB9-4E15-4BF0-847C-DE4CB97FF237}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireYouTubeSummariser.Worker", "AspireYouTubeSummariser.Worker\AspireYouTubeSummariser.Worker.csproj", "{C093B320-3ED0-433D-8A18-B4BF254CDAD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireYouTubeSummariser.Shared", "AspireYouTubeSummariser.Shared\AspireYouTubeSummariser.Shared.csproj", "{222CA7EF-26E3-4FE5-A4B5-4438D4AD412B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{947ABBB9-4E15-4BF0-847C-DE4CB97FF237}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{947ABBB9-4E15-4BF0-847C-DE4CB97FF237}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{947ABBB9-4E15-4BF0-847C-DE4CB97FF237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C093B320-3ED0-433D-8A18-B4BF254CDAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C093B320-3ED0-433D-8A18-B4BF254CDAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C093B320-3ED0-433D-8A18-B4BF254CDAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C093B320-3ED0-433D-8A18-B4BF254CDAD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222CA7EF-26E3-4FE5-A4B5-4438D4AD412B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222CA7EF-26E3-4FE5-A4B5-4438D4AD412B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222CA7EF-26E3-4FE5-A4B5-4438D4AD412B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222CA7EF-26E3-4FE5-A4B5-4438D4AD412B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

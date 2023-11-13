@@ -3,6 +3,7 @@ using Aliencube.YouTubeSubtitlesExtractor;
 
 using AspireYouTubeSummariser.Shared.Configurations;
 using AspireYouTubeSummariser.Shared.Services;
+using AspireYouTubeSummariser.Worker;
 
 using Azure;
 using Azure.AI.OpenAI;
@@ -10,15 +11,15 @@ using Azure.AI.OpenAI;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddAzureQueueService("queue");
 builder.AddAzureTableService("table");
 
 // Add services to the container.
-
-builder.Services.AddScoped<IYouTubeService, YouTubeService>();
+builder.Services.AddSingleton<IYouTubeService, YouTubeService>();
 builder.Services.AddSingleton<OpenAISettings>(p => p.GetService<IConfiguration>().GetSection(OpenAISettings.Name).Get<OpenAISettings>());
 builder.Services.AddSingleton<PromptSettings>(p => p.GetService<IConfiguration>().GetSection(PromptSettings.Name).Get<PromptSettings>());
 builder.Services.AddHttpClient<IYouTubeVideo, YouTubeVideo>();
-builder.Services.AddScoped<OpenAIClient>(p =>
+builder.Services.AddSingleton<OpenAIClient>(p =>
 {
     var openAISettings = p.GetService<OpenAISettings>();
     var endpoint = new Uri(openAISettings.Endpoint);
@@ -27,6 +28,7 @@ builder.Services.AddScoped<OpenAIClient>(p =>
 
     return openAIClient;
 });
+builder.Services.AddHostedService<Worker>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,4 +1,4 @@
-namespace AspireYouTubeSummariser.WebApp.Models;
+namespace AspireYouTubeSummariser.Shared.Models;
 
 public class WeatherForecast
 {

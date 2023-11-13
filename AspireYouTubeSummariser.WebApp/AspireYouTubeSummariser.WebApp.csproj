@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspireYouTubeSummariser.ServiceDefaults\AspireYouTubeSummariser.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\AspireYouTubeSummariser.Shared\AspireYouTubeSummariser.Shared.csproj" />
   </ItemGroup>
 
   <Target Name="PublishRunWebpack" AfterTargets="Build">

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AspireYouTubeSummariser.ApiApp\AspireYouTubeSummariser.ApiApp.csproj" />
     <ProjectReference Include="..\AspireYouTubeSummariser.WebApp\AspireYouTubeSummariser.WebApp.csproj" />
+    <ProjectReference Include="..\AspireYouTubeSummariser.Worker\AspireYouTubeSummariser.Worker.csproj" />
   </ItemGroup>
 
 </Project>

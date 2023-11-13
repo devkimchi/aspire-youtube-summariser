@@ -1,4 +1,4 @@
-﻿using AspireYouTubeSummariser.WebApp.Models;
+﻿using AspireYouTubeSummariser.Shared.Models;
 
 namespace AspireYouTubeSummariser.WebApp.Clients;
 

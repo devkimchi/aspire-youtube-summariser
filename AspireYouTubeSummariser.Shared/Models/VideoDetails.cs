@@ -3,10 +3,14 @@
 using Azure;
 using Azure.Data.Tables;
 
-namespace AspireYouTubeSummariser.ApiApp.Models;
+namespace AspireYouTubeSummariser.Shared.Models;
 
 public class VideoDetails : ITableEntity
 {
+    public VideoDetails()
+    {
+    }
+
     public VideoDetails(string partitionKey, string rowKey)
     {
         this.PartitionKey = partitionKey;

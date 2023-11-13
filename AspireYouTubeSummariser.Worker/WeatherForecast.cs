@@ -1,4 +1,4 @@
-namespace AspireYouTubeSummariser.ApiApp.Models;
+namespace AspireYouTubeSummariser.Worker;
 
 public class WeatherForecast
 {

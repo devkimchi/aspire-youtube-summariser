@@ -1,7 +1,8 @@
 ﻿using System.Net;
 
-using AspireYouTubeSummariser.ApiApp.Models;
-using AspireYouTubeSummariser.ApiApp.Services;
+using AspireYouTubeSummariser.Shared;
+using AspireYouTubeSummariser.Shared.Models;
+using AspireYouTubeSummariser.Shared.Services;
 
 using Azure.Data.Tables;
 
@@ -13,17 +14,14 @@ namespace AspireYouTubeSummariser.ApiApp.Controllers;
 [Route("[controller]")]
 public class SummaryController : ControllerBase
 {
-    private const string PartitionKey = "75198dc5-8463-415c-9478-ff67e1b78c98";
-    private const string TableName = "videos";
-
-    private readonly ISummaryService _service;
+    private readonly IYouTubeService _service;
     private readonly TableClient _tableClient;
     private readonly ILogger<SummaryController> _logger;
 
-    public SummaryController(ISummaryService service, TableServiceClient tableServiceClient, ILogger<SummaryController> logger)
+    public SummaryController(IYouTubeService service, TableServiceClient tableServiceClient, ILogger<SummaryController> logger)
     {
         this._service = service ?? throw new ArgumentNullException(nameof(service));
-        this._tableClient = (tableServiceClient ?? throw new ArgumentNullException(nameof(tableServiceClient))).GetTableClient(TableName);
+        this._tableClient = (tableServiceClient ?? throw new ArgumentNullException(nameof(tableServiceClient))).GetTableClient(ServiceNames.TableName);
         this._logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
@@ -35,7 +33,7 @@ public class SummaryController : ControllerBase
         var entities = new List<VideoDetails>();
         try
         {
-            var results = this._tableClient.QueryAsync<VideoDetails>(x => x.PartitionKey == PartitionKey);
+            var results = this._tableClient.QueryAsync<VideoDetails>(x => x.PartitionKey == ServiceNames.TablePartitionKey);
             await foreach (var page in results.AsPages())
             {
                 entities.AddRange(page.Values);
@@ -60,7 +58,7 @@ public class SummaryController : ControllerBase
         try
         {
             summary = await this._service
-                                .ExecuteAsync(req.VideoUrl, req.VideoLanguageCode, req.SummaryLanguageCode);
+                                .SummariseAsync(req.VideoUrl, req.VideoLanguageCode, req.SummaryLanguageCode);
         }
         catch (Exception ex)
         {
