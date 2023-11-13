@@ -11,10 +11,12 @@ using Azure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddAzureQueueService("queue");
+builder.AddAzureTableService("table");
 
 // Add services to the container.
 
-builder.Services.AddTransient<ISummaryService, SummaryService>();
+builder.Services.AddScoped<ISummaryService, SummaryService>();
 builder.Services.AddSingleton<OpenAISettings>(p => p.GetService<IConfiguration>().GetSection(OpenAISettings.Name).Get<OpenAISettings>());
 builder.Services.AddSingleton<PromptSettings>(p => p.GetService<IConfiguration>().GetSection(PromptSettings.Name).Get<PromptSettings>());
 builder.Services.AddHttpClient<IYouTubeVideo, YouTubeVideo>();
@@ -27,6 +29,7 @@ builder.Services.AddScoped<OpenAIClient>(p =>
 
     return openAIClient;
 });
+//builder.Services.AddHostedService<QueueStorageServiceWorker>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

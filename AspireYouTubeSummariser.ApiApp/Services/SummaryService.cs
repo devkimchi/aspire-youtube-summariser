@@ -1,4 +1,5 @@
 ﻿using Aliencube.YouTubeSubtitlesExtractor.Abstractions;
+using Aliencube.YouTubeSubtitlesExtractor.Models;
 
 using AspireYouTubeSummariser.ApiApp.Configurations;
 
@@ -8,6 +9,8 @@ namespace AspireYouTubeSummariser.ApiApp.Services;
 
 public interface ISummaryService
 {
+    string GetVideoId(string videoUrl);
+    Task<VideoDetails> GetVideoDetailsAsync(string videoUrl);
     Task<string> ExecuteAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en");
 }
 
@@ -26,6 +29,20 @@ public class SummaryService : ISummaryService
         this._openAISettings = openAISettings ?? throw new ArgumentNullException(nameof(openAISettings));
         this._promptSettings = promptSettings ?? throw new ArgumentNullException(nameof(promptSettings));
         this._logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
+
+    public string GetVideoId(string videoUrl)
+    {
+        var videoId = this._youtube.GetVideoId(videoUrl);
+
+        return videoId;
+    }
+
+    public async Task<VideoDetails> GetVideoDetailsAsync(string videoUrl)
+    {
+        var videoDetails = await this._youtube.ExtractVideoDetailsAsync(videoUrl).ConfigureAwait(false);
+
+        return videoDetails;
     }
 
     public async Task<string> ExecuteAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en")

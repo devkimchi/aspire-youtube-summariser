@@ -6,6 +6,7 @@ public interface IApiAppClient
 {
     Task<List<WeatherForecast>> GetWeatherForecastsAsync();
     Task<string> GetVideoSummaryAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en");
+    Task<List<VideoDetails>> GetVideoSummariesAsync();
 }
 
 public class ApiAppClient : IApiAppClient
@@ -31,5 +32,12 @@ public class ApiAppClient : IApiAppClient
         var summary = await result.Content.ReadAsStringAsync()
                                   .ConfigureAwait(false);
         return summary;
+    }
+
+    public async Task<List<VideoDetails>> GetVideoSummariesAsync()
+    {
+        var results = await this._http.GetFromJsonAsync<List<VideoDetails>>("Summary")
+                                      .ConfigureAwait(false);
+        return results;
     }
 }
