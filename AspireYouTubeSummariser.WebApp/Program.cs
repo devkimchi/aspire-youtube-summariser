@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 builder.AddRedisOutputCache("cache");
+builder.AddAzureQueueService("queue");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -15,6 +16,7 @@ builder.Services.AddHttpClient<IApiAppClient, ApiAppClient>(client =>
     //client.BaseAddress = new Uri("http://localhost:5050");
     client.BaseAddress = new Uri("http://apiapp");
 });
+builder.Services.AddScoped<IQueueServiceClientWrapper, QueueServiceClientWrapper>();
 
 var app = builder.Build();
 

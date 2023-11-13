@@ -1,5 +1,7 @@
 ﻿@using AspireYouTubeSummariser.WebApp.Clients
+@using Azure.Storage.Queues
 @inject IApiAppClient ApiApp
+@inject IQueueServiceClientWrapper Queue
 @inject IJSRuntime JSR
 
 <div class="container">
@@ -70,6 +72,8 @@
 
 		var summary = await ApiApp.GetVideoSummaryAsync(youTubeLinkUrl, videoLanguageCode, summaryLanguageCode);
 		summaryResult = summary;
+
+		await Queue.SendMessageAsync(youTubeLinkUrl, videoLanguageCode, summaryLanguageCode);
 
 		summaryCompleted = true;
 	}
