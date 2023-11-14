@@ -1,4 +1,4 @@
-﻿namespace AspireYouTubeSummariser.ApiApp.Configurations;
+﻿namespace AspireYouTubeSummariser.Shared.Configurations;
 
 public class PromptSettings
 {

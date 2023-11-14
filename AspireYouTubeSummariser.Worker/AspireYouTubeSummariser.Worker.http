@@ -1,0 +1,6 @@
+@AspireYouTubeSummariser.Worker_HostAddress = http://localhost:5060
+
+GET {{AspireYouTubeSummariser.Worker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

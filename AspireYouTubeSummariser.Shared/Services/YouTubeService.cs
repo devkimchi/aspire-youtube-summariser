@@ -1,25 +1,30 @@
 ﻿using Aliencube.YouTubeSubtitlesExtractor.Abstractions;
+using Aliencube.YouTubeSubtitlesExtractor.Models;
 
-using AspireYouTubeSummariser.ApiApp.Configurations;
+using AspireYouTubeSummariser.Shared.Configurations;
 
 using Azure.AI.OpenAI;
 
-namespace AspireYouTubeSummariser.ApiApp.Services;
+using Microsoft.Extensions.Logging;
 
-public interface ISummaryService
+namespace AspireYouTubeSummariser.Shared.Services;
+
+public interface IYouTubeService
 {
-    Task<string> ExecuteAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en");
+    string GetVideoId(string videoUrl);
+    Task<VideoDetails> GetVideoDetailsAsync(string videoUrl);
+    Task<string> SummariseAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en");
 }
 
-public class SummaryService : ISummaryService
+public class YouTubeService : IYouTubeService
 {
     private readonly IYouTubeVideo _youtube;
     private readonly OpenAIClient _openai;
     private readonly OpenAISettings _openAISettings;
     private readonly PromptSettings _promptSettings;
-    private readonly ILogger<SummaryService> _logger;
+    private readonly ILogger<YouTubeService> _logger;
 
-    public SummaryService(IYouTubeVideo youtube, OpenAIClient openai, OpenAISettings openAISettings, PromptSettings promptSettings, ILogger<SummaryService> logger)
+    public YouTubeService(IYouTubeVideo youtube, OpenAIClient openai, OpenAISettings openAISettings, PromptSettings promptSettings, ILogger<YouTubeService> logger)
     {
         this._youtube = youtube ?? throw new ArgumentNullException(nameof(youtube));
         this._openai = openai ?? throw new ArgumentNullException(nameof(openai));
@@ -28,7 +33,25 @@ public class SummaryService : ISummaryService
         this._logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<string> ExecuteAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en")
+    public string GetVideoId(string videoUrl)
+    {
+        this._logger.LogInformation($"Video URL: {videoUrl}");
+
+        var videoId = this._youtube.GetVideoId(videoUrl);
+
+        return videoId;
+    }
+
+    public async Task<VideoDetails> GetVideoDetailsAsync(string videoUrl)
+    {
+        this._logger.LogInformation($"Video URL: {videoUrl}");
+
+        var videoDetails = await this._youtube.ExtractVideoDetailsAsync(videoUrl).ConfigureAwait(false);
+
+        return videoDetails;
+    }
+
+    public async Task<string> SummariseAsync(string videoUrl, string videoLanguageCode = "en", string summaryLanguageCode = "en")
     {
         this._logger.LogInformation($"Video URL: {videoUrl}");
 

@@ -1,0 +1,116 @@
+﻿@using AspireYouTubeSummariser.Shared.Models
+@using AspireYouTubeSummariser.WebApp.Clients
+@inject IQueueServiceClientWrapper Queue
+@inject IApiAppClient ApiApp
+
+<div class="container">
+	<div class="row">
+		<h2>YouTube Summariser (Async)</h2>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">YouTube Link</th>
+						<th scope="col">Title</th>
+						<th scope="col">Summary Language Code</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (youTubeVideos == null)
+					{
+						<tr>
+							<td class="text-center" scope="row" colspan="3"><em>Loading...</em></td>
+						</tr>
+					}
+					else if (youTubeVideos.Any() == false)
+					{
+						<tr>
+							<td class="text-center" scope="row" colspan="3"><string>No history</string></td>
+						</tr>
+					}
+					else
+					{
+						foreach (var video in youTubeVideos)
+						{
+							<tr>
+								<td scope="row"><a href="https://youtu.be/@(video.VideoId)" @onclick="@(() => GetSummaryAsync(video.VideoId, video.SummaryLanguageCode))" @onclick:preventDefault>https://youtu.be/@(video.VideoId)</a></td>
+								<td>@video.Title</td>
+								<td>@video.SummaryLanguageCode</td>
+							</tr>
+						}
+					}
+					<tr>
+						<td scope="row">
+							<label for="youtube-link" class="form-label"><strong>YouTube Link</strong></label>
+							<input class="form-control" id="youtube-link" placeholder="Add YouTube link here" @bind="youTubeLinkUrl" />
+						</td>
+						<td>
+							<label for="video-language-code" class="form-label"><strong>Video Language</strong></label>
+							<select class="form-select" id="video-language-code" aria-label="Video language code" @bind="videoLanguageCode">
+								<option value="en" selected>English</option>
+								<option value="ko">Korean</option>
+							</select>
+							<label for="summary-language-code" class="form-label"><strong>Summary Language</strong></label>
+							<select class="form-select" id="summary-language-code" aria-label="Summary language code" @bind="summaryLanguageCode">
+								<option value="en" selected>English</option>
+								<option value="ko">Korean</option>
+							</select>
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary" @onclick="SummariseAsync">Summarise!</button>
+							<button type="button" class="btn btn-secondary" @onclick="ClearAsync">Clear!</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="mb-3">
+			<label for="summary" class="form-label"><strong>Summary</strong></label>
+			<textarea class="form-control" id="summary" rows="10" placeholder="Result will show here" readonly>@summaryResult</textarea>
+		</div>
+	</div>
+
+</div>
+
+@code {
+	private List<VideoDetails>? youTubeVideos;
+	private string youTubeLinkUrl = string.Empty;
+	private string videoLanguageCode = "en";
+	private string summaryLanguageCode = "en";
+	private string summaryResult = string.Empty;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var videos = await ApiApp.GetVideoSummariesAsync();
+		youTubeVideos = videos;
+	}
+
+	private async Task GetSummaryAsync(string videoId, string languageCode)
+	{
+		var summary = youTubeVideos.SingleOrDefault(p => p.VideoId == videoId && p.SummaryLanguageCode == languageCode)?.Summary;
+		summaryResult = summary;
+	}
+
+	private async Task SummariseAsync()
+	{
+		await Queue.SendMessageAsync(youTubeLinkUrl, videoLanguageCode, summaryLanguageCode);
+
+		summaryResult = "Summary request sent";
+	}
+
+	private async Task ClearAsync()
+	{
+		youTubeLinkUrl = string.Empty;
+		videoLanguageCode = "en";
+		summaryLanguageCode = "en";
+		summaryResult = string.Empty;
+
+		await Task.CompletedTask;
+	}
+}

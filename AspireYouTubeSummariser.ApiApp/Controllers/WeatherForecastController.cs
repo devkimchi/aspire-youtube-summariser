@@ -1,4 +1,4 @@
-using AspireYouTubeSummariser.ApiApp.Models;
+using AspireYouTubeSummariser.Shared.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
