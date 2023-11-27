@@ -80,10 +80,10 @@ jobs:
       # if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
       shell: pwsh
       run: |
-        $resource = az resource list -g rg-${{ vars.AZURE_ENV_NAME }} --query "[?type=='Microsoft.CognitiveServices/accounts'].name" -o tsv
-        $endpoint = az cognitiveservices account show -g rg-${{ vars.AZURE_ENV_NAME }} -n $instance --query "properties.endpoint" -o tsv
-        $apiKey = az cognitiveservices account keys list -g rg-${{ vars.AZURE_ENV_NAME }} -n $instance --query "key1" -o tsv
-        $deploymentId = az cognitiveservices account deployment list -g rg-${{ vars.AZURE_ENV_NAME }} -n $instance --query "[].name" -o tsv
+        $resourceName = az resource list -g rg-${{ vars.AZURE_ENV_NAME }} --query "[?type=='Microsoft.CognitiveServices/accounts'].name" -o tsv
+        $endpoint = az cognitiveservices account show -g rg-${{ vars.AZURE_ENV_NAME }} -n $resourceName --query "properties.endpoint" -o tsv
+        $apiKey = az cognitiveservices account keys list -g rg-${{ vars.AZURE_ENV_NAME }} -n $resourceName --query "key1" -o tsv
+        $deploymentId = az cognitiveservices account deployment list -g rg-${{ vars.AZURE_ENV_NAME }} -n $resourceName --query "[].name" -o tsv
 
         $openAI = @{ Endpoint = $endpoint; ApiKey = $apiKey; DeploymentId = $deploymentId; }
 
