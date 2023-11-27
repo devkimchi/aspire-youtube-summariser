@@ -6,8 +6,11 @@ This provides sample Aspire-orchestrated apps that summarise a YouTube video tra
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0?WT.mc_id=dotnet-107070-juyoo)
 - [Visual Studio 2022](https://visualstudio.microsoft.com?WT.mc_id=dotnet-107070-juyoo) 17.9 or later with the .NET Aspire workload installed
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Docker Desktop](https://docker.com/products/docker-desktop)
 - [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview?WT.mc_id=dotnet-107070-juyoo)
+- [Azure CLI](https://learn.microsoft.com/cli/azure/what-is-azure-cli?WT.mc_id=dotnet-107070-juyoo)
+- [GitHub CLI](https://cli.github.com/)
+- [PowerShell](https://learn.microsoft.com/powershell/scripting/overview?WT.mc_id=dotnet-107070-juyoo)
 - [Azure subscription](https://azure.microsoft.com/free?WT.mc_id=dotnet-107070-juyoo)
 - [Azure OpenAI Service subscription](https://aka.ms/oaiapply)
 
@@ -99,6 +102,44 @@ This provides sample Aspire-orchestrated apps that summarise a YouTube video tra
    ```bash
    dotnet run --project AspireYouTubeSummariser.AppHost
    ```
+
+### Deploy to Azure
+
+1. Checkout to the `main` branch
+
+   ```bash
+   git switch main
+   dotnet restore && dotnet build
+   ```
+
+1. Rename `appsettings.Development.sample.json` in the `AppHost` project to `appsettings.Development.json`.
+
+1. Add Azure OpenAI Service details &ndash; endpoint, API key and deployment ID &ndash; to the file. You can get these details from the [Azure Portal](https://portal.azure.com/?WT.mc_id=dotnet-107070-juyoo).
+
+1. Add Azure Queue/Table Storage Account details &ndash; connection strings &ndash; to the file You can get these details from the [Azure Portal](https://portal.azure.com/?WT.mc_id=dotnet-107070-juyoo).
+
+1. Run the following commands in order:
+
+   ```bash
+   # Initialise azd
+   AZURE_ENV_NAME="aspire$RANDOM"
+   azd init -e $AZURE_ENV_NAME
+
+   # Provision resources to Azure
+   azd provision
+
+   # Provision GitHub Actions environment
+   azd pipeline config
+   pwsh Set-GitHubActionsVariables.ps1 -GitHubAlias <GitHubAlias>
+
+   # Provision rest of resources to Azure outside Aspire
+   pwsh Run-PostProvision.ps1 -GitHubAlias <GitHubAlias>
+
+   # Deploy apps to Azure
+   azd deploy
+   ```
+
+1. Push code changes to the GitHub repository to trigger a GitHub Actions workflow.
 
 ## Resources
 

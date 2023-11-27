@@ -14,7 +14,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddHttpClient<IApiAppClient, ApiAppClient>(client =>
 {
     //client.BaseAddress = new Uri("http://localhost:5050");
-    client.BaseAddress = new Uri("http://apiapp");
+    client.BaseAddress = new Uri("https://apiapp");
 });
 builder.Services.AddScoped<IQueueServiceClientWrapper, QueueServiceClientWrapper>();
 
