@@ -119,8 +119,8 @@ public static class Extensions
         //    .WithMetrics(metrics => metrics.AddPrometheusExporter());
 
         // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.Exporter package)
-        builder.Services.AddOpenTelemetry()
-           .UseAzureMonitor();
+        // builder.Services.AddOpenTelemetry()
+        //    .UseAzureMonitor();
 
         return builder;
     }
