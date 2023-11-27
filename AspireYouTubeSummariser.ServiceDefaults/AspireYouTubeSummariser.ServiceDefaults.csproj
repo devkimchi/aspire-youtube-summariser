@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -11,6 +11,7 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
 
+    <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="1.0.0-beta.8" />
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.0-preview.1.23557.2" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.7.0-alpha.1" />
