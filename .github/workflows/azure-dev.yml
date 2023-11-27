@@ -4,6 +4,9 @@ on:
     branches:
     - main
     - 'feature/*'
+  pull_request:
+    branches:
+    - main
 
 # https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Clinux#set-up-azure-login-with-openid-connect-authentication
 permissions:
@@ -87,12 +90,12 @@ jobs:
 
         $openAI = @{ Endpoint = $endpoint; ApiKey = $apiKey; DeploymentId = $deploymentId; }
 
-        # Copy-Item -Path ./AspireYouTubeSummariser.AppHost/appsettings.Development.sample.json `
-        #     -Destination ./AspireYouTubeSummariser.AppHost/appsettings.Development.json -Force
+        Copy-Item -Path ./AspireYouTubeSummariser.AppHost/appsettings.Development.sample.json `
+            -Destination ./AspireYouTubeSummariser.AppHost/appsettings.Development.json -Force
 
-        $appsettings = Get-Content -Path ./AspireYouTubeSummariser.AppHost/appsettings.json | ConvertFrom-Json
+        $appsettings = Get-Content -Path ./AspireYouTubeSummariser.AppHost/appsettings.Development.json | ConvertFrom-Json
         $appsettings.OpenAI = $openAI
-        $appsettings | ConvertTo-Json -Depth 100 | Out-File -Path ./AspireYouTubeSummariser.AppHost/appsettings.json -Force
+        $appsettings | ConvertTo-Json -Depth 100 | Out-File -Path ./AspireYouTubeSummariser.AppHost/appsettings.Development.json -Force
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3

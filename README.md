@@ -139,6 +139,8 @@ This provides sample Aspire-orchestrated apps that summarise a YouTube video tra
    azd deploy
    ```
 
+1. Push code changes to the GitHub repository to trigger a GitHub Actions workflow.
+
 ## Resources
 
 - [.NET Aspire overview](https://learn.microsoft.com/dotnet/aspire/get-started/aspire-overview?WT.mc_id=dotnet-107070-juyoo)
