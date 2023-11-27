@@ -486,3 +486,7 @@ $RECYCLE.BIN/
 appsettings.Development.json
 **/bundle.js
 **/bundle.js.*.txt
+.azure
+
+*.bak
+*.org
