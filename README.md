@@ -2,7 +2,6 @@
 
 This provides sample Aspire-orchestrated apps that summarise a YouTube video transcript to a given language.
 
-
 ## Prerequisites
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0?WT.mc_id=dotnet-107070-juyoo)
